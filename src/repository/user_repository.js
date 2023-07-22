@@ -38,6 +38,19 @@ class UsersRepository{
             
         }
     }
+    async destroy(userId,data){
+        try {
+            
+           const user=await Users.findByIdAndRemove(userId);
+           return user;
+            
+        } catch (error) {
+            console.log("error in repository layer");
+            throw{error};
+            
+        }
+    }
+
 
 
 

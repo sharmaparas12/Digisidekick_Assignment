@@ -70,6 +70,27 @@ const update=async (req,res) => {
 
 
 
+const destroy=async (req,res) => {
+    try {
+        const response=await userservice.destroy(req.params.id);
+        return res.status(200).json({
+            message:'User deleted suceefully',
+            data:response,
+            status:true,
+            err:{}
+        });
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message:'something went wrong in controllers',
+            data:{},
+            status:false,
+            err:error
+        });
+        
+    }
+}
 
 
 
@@ -79,6 +100,7 @@ const update=async (req,res) => {
 module.exports={
     Adduser,
     getalluser,
-    update
+    update,
+    destroy
    
 }

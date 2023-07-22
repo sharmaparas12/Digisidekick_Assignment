@@ -36,6 +36,16 @@ class Userservice{
             throw{error};
         }
     }
+    async destroy(userId){
+        try {
+            const user=await this.userRepository.destroy(userId);
+            return user
+            
+        } catch (error) {
+            console.log("error in service layer");
+            throw{error};
+        }
+    }
    
 
 }
