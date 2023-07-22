@@ -25,12 +25,11 @@ const Adduser=async (req,res) => {
         
     }
 }
-
-const Removeuser=async (req,res) => {
+const getalluser=async (req,res) => {
     try {
-        const response=await userservice.create(req.body);
+        const response=await userservice.get();
         return res.status(200).json({
-            message:'User created Sucessfuly',
+            message:'All users fetched successfully',
             data:response,
             status:true,
             err:{}
@@ -54,9 +53,10 @@ const Removeuser=async (req,res) => {
 
 
 
+
+
 module.exports={
     Adduser,
-    Removeuser,
-   
+    getalluser
    
 }

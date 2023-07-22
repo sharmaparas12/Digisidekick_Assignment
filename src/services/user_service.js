@@ -15,6 +15,16 @@ class Userservice{
             throw{error};
         }
     }
+    async get(){
+        try {
+            const user=await this.userRepository.get();
+            return user
+            
+        } catch (error) {
+            console.log("error in service layer");
+            throw{error};
+        }
+    }
     
    
 

@@ -8,6 +8,7 @@ const usercontroller=require('../../controllers/user_controller');
 
 
 router.post('/adduser',usercontroller.Adduser);
+router.get('/users',usercontroller.getalluser);
 
 
 

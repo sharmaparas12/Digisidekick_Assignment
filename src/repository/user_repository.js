@@ -14,6 +14,18 @@ class UsersRepository{
             
         }
     }
+    async get(){
+        try {
+            
+            const user=await Users.find();
+            return user
+            
+        } catch (error) {
+            console.log("error in repository layer");
+            throw{error};
+            
+        }
+    }
 
 
 }
