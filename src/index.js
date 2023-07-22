@@ -1,15 +1,31 @@
 const express=require('express');
-const connect=require('./config/database');
+const bodyparser=require('body-parser');
 const app=express();
-const User=require('./models/users');
-app.listen(3045,async ()  => {
-    console.log("server started");
+const PORT=3099;
+const apiRoutes=require('./Routes/index');
+const connect=require('./config/database');
+
+const PrepareAndStartserver= async () => {
+
+    app.use(bodyparser.json());
+    app.use(bodyparser.urlencoded({extended:true}));
     await connect();
-    console.log("Mongo db connected");
-    const user=await User.create({Name:'Paras',userEmail:"ps88383@gmail.co",password:"29393"});
-    console.log(user);
-    // const tweet=await Tweet.findOne({userEmail:'parassharma2023@gmail.com'});
-    //const tweets=Tweet.find();
 
 
-});
+   
+    app.listen(PORT,async () => {
+        app.use(bodyparser.json());
+        app.use(bodyparser.urlencoded({extended:true}));
+        
+        app.use('/api',apiRoutes);
+    
+    
+    });
+
+
+
+}
+
+
+
+PrepareAndStartserver();
