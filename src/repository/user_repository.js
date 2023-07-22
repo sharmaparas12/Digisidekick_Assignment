@@ -26,6 +26,19 @@ class UsersRepository{
             
         }
     }
+    async update(userId,data){
+        try {
+            
+           const user=await Users.findByIdAndUpdate(userId,data);
+           return user;
+            
+        } catch (error) {
+            console.log("error in repository layer");
+            throw{error};
+            
+        }
+    }
+
 
 
 }

@@ -26,6 +26,16 @@ class Userservice{
         }
     }
     
+    async update(userId,data){
+        try {
+            const user=await this.userRepository.update(userId,data);
+            return user
+            
+        } catch (error) {
+            console.log("error in service layer");
+            throw{error};
+        }
+    }
    
 
 }
